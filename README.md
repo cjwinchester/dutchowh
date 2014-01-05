@@ -1,4 +1,4 @@
-dutchowh
+The Dutch WOrld-Herald
 ========
 
-Translating OWHnews tweets into Dutch because why not.
+<a href="https://twitter.com/DutchOWH" target="_blank">Translating OWHnews tweets into Dutch</a> because why not.
