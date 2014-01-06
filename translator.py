@@ -5,10 +5,10 @@ from datetime import *
 
 gs = goslate.Goslate()
 
-OAUTH_TOKEN = 'XXXXXXXXXXXXX'
-OAUTH_SECRET = 'XXXXXXXXXXXXX'
-CONSUMER_KEY = 'XXXXXXXXXXXXX'
-CONSUMER_SECRET = 'XXXXXXXXXXXXX'
+OAUTH_TOKEN = 'XXXXXXXXXX'
+OAUTH_SECRET = 'XXXXXXXXXX'
+CONSUMER_KEY = 'XXXXXXXXXX'
+CONSUMER_SECRET = 'XXXXXXXXXX'
 t = Twitter(auth=OAuth(OAUTH_TOKEN, OAUTH_SECRET, CONSUMER_KEY, CONSUMER_SECRET))
 
 #create new list
@@ -19,8 +19,8 @@ dowhlatest = t.statuses.user_timeline(screen_name="dutchowh",count=1)
 thendowh = dowhlatest[0]['created_at']
 ds = datetime.strptime(thendowh, '%a %b %d %H:%M:%S +0000 %Y')
 
-# get last 100 owh tweets, translate each and tweet the ones posted after last dutchOWH tweet
-owhlatest = t.statuses.user_timeline(screen_name="owhnews",count=100)
+# get last 50 owh tweets, translate each and tweet the ones posted after last dutchOWH tweet
+owhlatest = t.statuses.user_timeline(screen_name="owhnews",count=50)
 
 # loop through list
 for z in reversed(owhlatest):
@@ -44,5 +44,17 @@ for z in reversed(owhlatest):
         sleep(10)
     else:
         pass
-        
-print "Tweeted " + str(len(owhnew)) + " things."
+
+if len(owhnew) == 1:
+    thi = " thing"
+else:
+    thi = " things"
+
+apnums = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+
+if len(owhnew) < 10:
+    num = apnums[len(owhnew)]
+else:
+    num = str(len(owhnew))
+
+print "Tweeted " + num + thi
